@@ -56,6 +56,15 @@
 
         <li>
 
+            <a class="apidocElementLiA" href="#apidoc.element.to-markdown.to-markdown">
+            function <span class="apidocSignatureSpan"></span>to-markdown
+            <span class="apidocSignatureSpan">(input, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
             <a class="apidocElementLiA" href="#apidoc.element.to-markdown.html_parser">
             function <span class="apidocSignatureSpan">to-markdown.</span>html_parser
             <span class="apidocSignatureSpan">()</span>
@@ -128,6 +137,55 @@
 
 <div class="apidocSectionDiv">
 <h1><a href="#apidoc.module.to-markdown" id="apidoc.module.to-markdown">module to-markdown</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.to-markdown.to-markdown" id="apidoc.element.to-markdown.to-markdown">
+        function <span class="apidocSignatureSpan"></span>to-markdown
+        <span class="apidocSignatureSpan">(input, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">to-markdown = function (input, options) {
+  options = options || {}
+
+  if (typeof input !== 'string') {
+    throw new TypeError(input + ' is not a string')
+  }
+
+  if (input === '') {
+    return ''
+  }
+
+  // Escape potential ol triggers
+  input = input.replace(/(\d+)\. /g, '$1\\. ')
+
+  var clone = htmlToDom(input).body
+  var nodes = bfsOrder(clone)
+  var output
+
+  converters = mdConverters.slice(0)
+  if (options.gfm) {
+    converters = gfmConverters.concat(converters)
+  }
+
+  if (options.converters) {
+    converters = options.converters.concat(converters)
+  }
+
+  // Process through nodes in reverse (so deepest child elements are first).
+  for (var i = nodes.length - 1; i &gt;= 0; i--) {
+    process(nodes[i])
+  }
+  output = getContent(clone)
+
+  return output.replace(/^[\t\r\n]+|[\t\r\n\s]+$/g, '')
+    .replace(/\n\s+\n/g, '\n\n')
+    .replace(/\n{3,}/g, '\n\n')
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
 
 
     <h2>
