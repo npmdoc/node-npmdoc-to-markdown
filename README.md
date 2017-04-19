@@ -1,9 +1,14 @@
-# api documentation for  [to-markdown (v3.0.4)](https://github.com/domchristie/to-markdown#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-to-markdown.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-to-markdown) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-to-markdown.svg)](https://travis-ci.org/npmdoc/node-npmdoc-to-markdown)
+# npmdoc-to-markdown
+
+#### api documentation for  [to-markdown (v3.0.4)](https://github.com/domchristie/to-markdown#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-to-markdown.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-to-markdown) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-to-markdown.svg)](https://travis-ci.org/npmdoc/node-npmdoc-to-markdown)
+
 #### HTML-to-Markdown converter
 
-[![NPM](https://nodei.co/npm/to-markdown.png?downloads=true)](https://www.npmjs.com/package/to-markdown)
+[![NPM](https://nodei.co/npm/to-markdown.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/to-markdown)
 
-[![apidoc](https://npmdoc.github.io/node-npmdoc-to-markdown/build/screenCapture.buildNpmdoc.browser.%252Fhome%252Ftravis%252Fbuild%252Fnpmdoc%252Fnode-npmdoc-to-markdown%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-to-markdown/build/apidoc.html)
+- [https://npmdoc.github.io/node-npmdoc-to-markdown/build/apidoc.html](https://npmdoc.github.io/node-npmdoc-to-markdown/build/apidoc.html)
+
+[![apidoc](https://npmdoc.github.io/node-npmdoc-to-markdown/build/screenCapture.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-to-markdown/build/apidoc.html)
 
 ![npmPackageListing](https://npmdoc.github.io/node-npmdoc-to-markdown/build/screenCapture.npmPackageListing.svg)
 
@@ -54,13 +59,11 @@
     "main": "index.js",
     "maintainers": [
         {
-            "name": "domchristie",
-            "email": "christiedom@gmail.com"
+            "name": "domchristie"
         }
     ],
     "name": "to-markdown",
     "optionalDependencies": {},
-    "readme": "ERROR: No README data found!",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/domchristie/to-markdown.git"
@@ -72,156 +75,6 @@
     "url": "http://domchristie.github.com/to-markdown/",
     "version": "3.0.4"
 }
-```
-
-
-
-# <a name="apidoc.tableOfContents"></a>[table of contents](#apidoc.tableOfContents)
-
-#### [module to-markdown](#apidoc.module.to-markdown)
-1.  [function <span class="apidocSignatureSpan">to-markdown.</span>html_parser ()](#apidoc.element.to-markdown.html_parser)
-1.  [function <span class="apidocSignatureSpan">to-markdown.</span>isBlock (node)](#apidoc.element.to-markdown.isBlock)
-1.  [function <span class="apidocSignatureSpan">to-markdown.</span>isVoid (node)](#apidoc.element.to-markdown.isVoid)
-1.  [function <span class="apidocSignatureSpan">to-markdown.</span>outer (node, content)](#apidoc.element.to-markdown.outer)
-1.  object <span class="apidocSignatureSpan">to-markdown.</span>html_parser.prototype
-
-#### [module to-markdown.html_parser](#apidoc.module.to-markdown.html_parser)
-1.  [function <span class="apidocSignatureSpan">to-markdown.</span>html_parser ()](#apidoc.element.to-markdown.html_parser.html_parser)
-
-#### [module to-markdown.html_parser.prototype](#apidoc.module.to-markdown.html_parser.prototype)
-1.  [function <span class="apidocSignatureSpan">to-markdown.html_parser.prototype.</span>parseFromString (string)](#apidoc.element.to-markdown.html_parser.prototype.parseFromString)
-
-
-
-# <a name="apidoc.module.to-markdown"></a>[module to-markdown](#apidoc.module.to-markdown)
-
-#### <a name="apidoc.element.to-markdown.html_parser"></a>[function <span class="apidocSignatureSpan">to-markdown.</span>html_parser ()](#apidoc.element.to-markdown.html_parser)
-- description and source-code
-```javascript
-html_parser = function () {}
-```
-- example usage
-```shell
-n/a
-```
-
-#### <a name="apidoc.element.to-markdown.isBlock"></a>[function <span class="apidocSignatureSpan">to-markdown.</span>isBlock (node)](#apidoc.element.to-markdown.isBlock)
-- description and source-code
-```javascript
-function isBlock(node) {
-  return blocks.indexOf(node.nodeName.toLowerCase()) !== -1
-}
-```
-- example usage
-```shell
-...
-    }
-    return '\n\n' + strings.join('\n') + '\n\n'
-  }
-},
-
-{
-  filter: function (node) {
-    return this.isBlock(node)
-  },
-  replacement: function (content, node) {
-    return '\n\n' + this.outer(node, content) + '\n\n'
-  }
-},
-
-// Anything else!
-...
-```
-
-#### <a name="apidoc.element.to-markdown.isVoid"></a>[function <span class="apidocSignatureSpan">to-markdown.</span>isVoid (node)](#apidoc.element.to-markdown.isVoid)
-- description and source-code
-```javascript
-function isVoid(node) {
-  return voids.indexOf(node.nodeName.toLowerCase()) !== -1
-}
-```
-- example usage
-```shell
-n/a
-```
-
-#### <a name="apidoc.element.to-markdown.outer"></a>[function <span class="apidocSignatureSpan">to-markdown.</span>outer (node, content)](#apidoc.element.to-markdown.outer)
-- description and source-code
-```javascript
-function outer(node, content) {
-  return node.cloneNode(false).outerHTML.replace('><', '>' + content + '<')
-}
-```
-- example usage
-```shell
-...
-},
-
-{
-  filter: function (node) {
-    return this.isBlock(node)
-  },
-  replacement: function (content, node) {
-    return '\n\n' + this.outer(node, content) + '\n\n'
-  }
-},
-
-// Anything else!
-{
-  filter: function () {
-    return true
-...
-```
-
-
-
-# <a name="apidoc.module.to-markdown.html_parser"></a>[module to-markdown.html_parser](#apidoc.module.to-markdown.html_parser)
-
-#### <a name="apidoc.element.to-markdown.html_parser.html_parser"></a>[function <span class="apidocSignatureSpan">to-markdown.</span>html_parser ()](#apidoc.element.to-markdown.html_parser.html_parser)
-- description and source-code
-```javascript
-html_parser = function () {}
-```
-- example usage
-```shell
-n/a
-```
-
-
-
-# <a name="apidoc.module.to-markdown.html_parser.prototype"></a>[module to-markdown.html_parser.prototype](#apidoc.module.to-markdown.html_parser.prototype)
-
-#### <a name="apidoc.element.to-markdown.html_parser.prototype.parseFromString"></a>[function <span class="apidocSignatureSpan">to-markdown.html_parser.prototype.</span>parseFromString (string)](#apidoc.element.to-markdown.html_parser.prototype.parseFromString)
-- description and source-code
-```javascript
-parseFromString = function (string) {
-  return jsdom.jsdom(string, {
-    features: {
-      FetchExternalResources: [],
-      ProcessExternalResources: false
-    }
-  })
-}
-```
-- example usage
-```shell
-...
-]
-
-function isVoid (node) {
- return voids.indexOf(node.nodeName.toLowerCase()) !== -1
-}
-
-function htmlToDom (string) {
- var tree = new HtmlParser().parseFromString(string, 'text/html')
- collapse(tree.documentElement, isBlock)
- return tree
-}
-
-/*
-* Flattens DOM tree into single array
-*/
-...
 ```
 
 
